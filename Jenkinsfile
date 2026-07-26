@@ -8,6 +8,10 @@ pipeline {
     NEXUS_CREDS = credentials('nexus-creds')
     DOCKERHUB_CREDS = credentials('dockerhub-creds')
     }
+
+    tools {
+        maven 'Maven17'
+    }
  
     parameters {
         choice(name: 'ENV', choices: ['Dev', 'QA', 'UAT', 'Production'], description: 'select the environment for deployment')
