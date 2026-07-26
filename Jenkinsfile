@@ -73,7 +73,7 @@ pipeline {
             steps {
                 sh '''
                 kubectl create deployment spring-boot-app --image=${IMAGE_NAME}:${TAG}
-                kubectl expose deployment spring-boot-app --port=80 target-port=8080 --type=LoadBalancer
+                kubectl expose deployment spring-boot-app --port=80 --target-port=8080 --type=LoadBalancer
                 '''
             }
         }
