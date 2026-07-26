@@ -4,7 +4,7 @@ pipeline {
 
     environment {
     IMAGE_NAME = "faisalkhan35/spring-boot-app"
-    TAG = "$BUILD_NUMBER"
+    TAG = "${BUILD_NUMBER}"
     NEXUS_CREDS = credentials('nexus-creds')
     DOCKERHUB_CREDS = credentials('dockerhub-creds')
     }
