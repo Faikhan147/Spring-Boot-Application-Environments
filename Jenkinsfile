@@ -24,7 +24,6 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        
 
         stage('SonarQube') {
             steps {
@@ -37,21 +36,25 @@ pipeline {
         stage('Nexus Upload') {
             steps {
                 sh 'curl -v -u $NEXUS_CREDS_USR:$NEXUS_CREDS_PSW --upload-file target/Spring-Boot-application.-0.0.1-SNAPSHOT.jar http://4.213.225.138:8081/repository/maven-snapshots/com/example/Spring-Boot-application./0.0.1-SNAPSHOT/Spring-Boot-application.-0.0.1-SNAPSHOT.jar'
+            }
         }
 
         stage('Docker Build') {
             steps {
                 sh 'docker build -t ${IMAGE_NAME}:${TAG} .'
+            }
         }
 
         stage('Docker Hub Login') {
             steps {
                 sh 'echo $DOCKERHUB_CREDS_PSW | docker login -u DOCKERHUB_CREDS_USR --password-stdin'
+            }
         }
 
         stage('Docker Hub Push') {
             steps {
                 sh 'docker push ${IMAGE_NAME}:${TAG}'
+            }
         }
 
         stage('Deploy to Dev') {
