@@ -91,9 +91,7 @@ pipeline {
                 }
             }
             steps {
-                sh '''
                 input message: "Approval for UAT"
-                '''
             }
         }
 
@@ -117,9 +115,7 @@ pipeline {
                 }
             }
             steps {
-                sh '''
                 input message: "Is Change Request Approved ?"
-                '''
             }
         }
 
@@ -130,9 +126,7 @@ pipeline {
                 }
             }
             steps {
-                sh '''
                 input message: "Approval for Production"
-                '''
             }
         }
 
