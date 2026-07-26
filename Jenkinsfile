@@ -102,6 +102,7 @@ pipeline {
             steps {
                 input message: "Approval for UAT"
             }
+        }
 
         stage('Deploy to UAT') {
             when {
@@ -127,6 +128,7 @@ pipeline {
             steps {
                 input message: "Is Change Request is Approved ?"
             }
+        }
 
         stage('Approval for Production') {
             when {
@@ -138,6 +140,7 @@ pipeline {
             steps {
                 input message: "Approval for Production"
             }
+        }
 
         stage('Deploy to Production') {
             when {
